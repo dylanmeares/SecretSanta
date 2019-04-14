@@ -13,19 +13,27 @@ public class Main {
 
         String filename = args[0];
 
-        //List to hold family members
-        List<FamilyMember> familyMembers = new ArrayList<>();
-
         //Creating instance of ParticipantParser class
         ParticipantParser participantParser = new ParticipantParser();
 
         //Calling method to read the input file and return the list
-        // of family members
-        familyMembers = participantParser.getParticpants(filename);
+        // of family members to newly created variable
+        List<FamilyMember> familyMembers = participantParser.getParticpants(filename);
 
-        //Call method to generate Secret Santas
+        //Creating instance of SecretSantaGenerator class
         SecretSantaGenerator secretSantaGenerator = new SecretSantaGenerator();
-        List<SantaMatch> santaMatches = secretSantaGenerator.generateMatches(familyMembers);
+
+        //Calling function to generate Secret Santas
+        //Results will be stored in matches variables and then
+        //displayed to the console.
+        List<SantaMatch> matches = secretSantaGenerator.generateMatches(familyMembers);
+
+        //Outputting result to console
+        for(int i = 0; i < matches.size(); i++){
+            System.out.println(matches.get(i).santa.getName() + " is the Secret Santa for " + matches.get(i).receiver.getName());
+        }
+
+
 
     }
 

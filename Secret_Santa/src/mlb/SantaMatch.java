@@ -2,6 +2,6 @@ package mlb;
 
 public class SantaMatch {
 
-    FamilyMember buyer;
+    FamilyMember santa;
     FamilyMember receiver;
 }

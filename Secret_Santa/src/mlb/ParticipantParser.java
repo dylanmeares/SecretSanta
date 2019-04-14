@@ -35,6 +35,7 @@ public class ParticipantParser {
 
         } catch (FileNotFoundException e) {
             System.err.println("File Not Found");
+            System.exit(0);
         }
 
 

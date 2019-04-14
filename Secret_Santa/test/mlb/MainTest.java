@@ -3,6 +3,7 @@ package mlb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.*;
@@ -11,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class MainTest {
@@ -77,6 +79,41 @@ public class MainTest {
         }
         return content;
     }
+
+    //Test Files
+    private static final String FAMILY = "Billy" + System.lineSeparator() +
+            "Sue"  + System.lineSeparator() +
+            "John"  + System.lineSeparator();
+
+    /*
+     *  Main Test Suite
+     */
+
+    //Testing when no args are passed that usage is thrown
+    @Test
+    public void mainTest1() {
+
+        String args[] = {};
+        Main.main(args);
+
+        assertEquals("Usage: Secret_Santa <filename>", errStream.toString().trim());
+
+    }
+
+
+    //Testing that args after a filename are ignored
+    @Test
+    public void mainTest2() throws Exception {
+        File inputFile1 = createInputFile(FAMILY);
+
+        String args[] = {inputFile1.getPath(), "asdfds"};
+
+        Main.main(args);
+
+        assertThat(outStream.toString().contains("Generating Secret Santas"), is(true));
+    }
+
+
 
 
 
