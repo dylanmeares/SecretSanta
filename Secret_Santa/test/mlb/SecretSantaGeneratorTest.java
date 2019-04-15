@@ -136,7 +136,11 @@ public class SecretSantaGeneratorTest {
 
         List<SantaMatch> matches = secretSantaGenerator.generateMatches(familyMembers);
 
+        //Asserting number of matches
         assertEquals(48, matches.size());
+
+        //Asserting past santas were assigned
+        assertEquals(matches.get(0).receiver.pastSantas[0].getName().trim(), matches.get(0).santa.getName().trim());
     }
 
 }

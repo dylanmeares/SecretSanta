@@ -83,7 +83,8 @@ public class MainTest {
     //Test Files
     private static final String FAMILY = "Billy" + System.lineSeparator() +
             "Sue"  + System.lineSeparator() +
-            "John"  + System.lineSeparator();
+            "John"  + System.lineSeparator() +
+            "Dylan";
 
     /*
      *  Main Test Suite
@@ -96,22 +97,37 @@ public class MainTest {
         String args[] = {};
         Main.main(args);
 
-        assertEquals("Usage: Secret_Santa <filename>", errStream.toString().trim());
+        assertEquals("Usage: Secret_Santa <filename> <# of years to generate>", errStream.toString().trim());
 
     }
 
 
-    //Testing that args after a filename are ignored
+    //Testing when second argument is not a number that an error is thrown
     @Test
     public void mainTest2() throws Exception {
         File inputFile1 = createInputFile(FAMILY);
 
-        String args[] = {inputFile1.getPath(), "asdfds"};
+        String args[] = {inputFile1.getPath(), "fasdf"};
+
+        Main.main(args);
+
+        assertEquals("The second argument must be a number.", outStream.toString().trim());
+        assertEquals("Usage: Secret_Santa <filename> <# of years to generate>", errStream.toString().trim());
+    }
+
+    //Testing that any 3rd argument is ignored
+    @Test
+    public void mainTest3() throws Exception {
+        File inputFile1 = createInputFile(FAMILY);
+
+        String args[] = {inputFile1.getPath(), "2", "asdfasdf"};
 
         Main.main(args);
 
         assertThat(outStream.toString().contains("Generating Secret Santas"), is(true));
     }
+
+
 
 
 
