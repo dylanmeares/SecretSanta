@@ -86,15 +86,15 @@ public class ParticipantParserTest {
      * TEST FILES
      */
 
-    private static final String FAMILYLIST1 = "Susan" + System.lineSeparator() +  System.lineSeparator() +
-            "Dylan" + System.lineSeparator() + System.lineSeparator() + "Logan" + System.lineSeparator();
+    private static final String FAMILYLIST1 = "Susan Smith" + System.lineSeparator() +  System.lineSeparator() +
+            "Dylan Meares" + System.lineSeparator() + System.lineSeparator() + "Logan Rader" + System.lineSeparator();
 
-    private static final String FAMILYLIST2 = "Susan";
+    private static final String FAMILYLIST2 = "Susan Smith";
 
-    private static final String FAMILYLIST3 = "Susan" + System.lineSeparator() + "Sally" + System.lineSeparator() +
-            "Sam" + System.lineSeparator() + "Sandy" + System.lineSeparator() + "Seth" + System.lineSeparator() +
-            "Sue" + System.lineSeparator() + "Solomon" + System.lineSeparator() + "Simon" + System.lineSeparator() +
-            "Shane" + System.lineSeparator() + "Shelby" + System.lineSeparator() + "Stephany";
+    private static final String FAMILYLIST3 = "Susan Rader" + System.lineSeparator() + "Sally Smith" + System.lineSeparator() +
+            "Sam Rader" + System.lineSeparator() + "Sandy Smith" + System.lineSeparator() + "Seth Rader" + System.lineSeparator() +
+            "Sue Smith" + System.lineSeparator() + "Solomon Rader" + System.lineSeparator() + "Simon Rader" + System.lineSeparator() +
+            "Shane Smith" + System.lineSeparator() + "Shelby Rader" + System.lineSeparator() + "Stephany Smith";
 
 
     //Testing when file is not found that we get back the appropriate exception
@@ -129,7 +129,7 @@ public class ParticipantParserTest {
 
         for(int i = 0; i < actual.size(); i++){
 
-            actualOutput.add(actual.get(i).getName());
+            actualOutput.add(actual.get(i).getFirstName());
         }
 
         //Expected output as a list of strings
@@ -161,7 +161,7 @@ public class ParticipantParserTest {
 
         for(int i = 0; i < actual.size(); i++){
 
-            actualOutput.add(actual.get(i).getName());
+            actualOutput.add(actual.get(i).getFirstName());
         }
 
         //Expected output as a list of strings
@@ -193,7 +193,7 @@ public class ParticipantParserTest {
 
         for(int i = 0; i < actual.size(); i++){
 
-            actualOutput.add(actual.get(i).getName());
+            actualOutput.add(actual.get(i).getFirstName());
         }
 
         //Expected output as a list of strings
@@ -224,7 +224,7 @@ public class ParticipantParserTest {
 
         for(int i = 0; i < actual.size(); i++){
 
-            actualOutput.add(actual.get(i).getName());
+            actualOutput.add(actual.get(i).getFirstName());
         }
 
         //Expected output as a list of strings

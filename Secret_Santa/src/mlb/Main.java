@@ -2,6 +2,8 @@ package mlb;
 
 import java.util.*;
 
+//Created by Dylan Meares
+
 public class Main {
 
     public static void main(String[] args) {
@@ -58,7 +60,9 @@ public class Main {
 
             //Outputting result to console
             for(int j = 0; j < matches.size(); j++){
-                System.out.println(matches.get(j).santa.getName() + " is the Secret Santa for " + matches.get(j).receiver.getName());
+                System.out.println(matches.get(j).santa.getFirstName() + " " + matches.get(j).santa.getLastName()
+                        + " is the Secret Santa for "
+                        + matches.get(j).receiver.getFirstName() + " " + matches.get(j).receiver.getLastName());
             }
 
         }

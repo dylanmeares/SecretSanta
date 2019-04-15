@@ -5,12 +5,14 @@ package mlb;
 public class FamilyMember {
 
     //Attributes
-    String name;
+    String firstName;
+    String lastName;
     FamilyMember[] pastSantas = new FamilyMember[3];
 
     //Constructor
-    public FamilyMember(String name) {
-        this.name = name;
+    public FamilyMember(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         pastSantas[0] = new FamilyMember();
         pastSantas[1] = new FamilyMember();
         pastSantas[2] = new FamilyMember( );
@@ -18,26 +20,34 @@ public class FamilyMember {
 
     //Constructor
     public FamilyMember() {
-        this.name = "";
+        this.firstName = "";
     }
 
 
     //Getters
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     public FamilyMember[] getPastSantas() {
         return pastSantas;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
 
     //Setters
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public void setPastSantas(FamilyMember[] pastSantas) {
         this.pastSantas = pastSantas;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

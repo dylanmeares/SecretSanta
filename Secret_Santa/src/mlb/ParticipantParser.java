@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//This class is responsible for parsing the input file and returning the list of family fembers
 public class ParticipantParser {
 
     //List of family members to return as a result
@@ -27,11 +28,12 @@ public class ParticipantParser {
             //Reading in each line of the file, adding the names to familyMembers
             while (scanner.hasNext()) {
 
-                String name = scanner.nextLine();
+                String name = scanner.next();
+                String lastName = scanner.next();
 
                 //Ignoring blank lines
                 if (!name.equals("")) {
-                    FamilyMember familyMember = new FamilyMember(name);
+                    FamilyMember familyMember = new FamilyMember(name, lastName);
                     familyMembers.add(familyMember);
                 }
 

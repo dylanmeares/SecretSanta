@@ -81,10 +81,10 @@ public class MainTest {
     }
 
     //Test Files
-    private static final String FAMILY = "Billy" + System.lineSeparator() +
-            "Sue"  + System.lineSeparator() +
-            "John"  + System.lineSeparator() +
-            "Dylan";
+    private static final String FAMILY = "Billy First" + System.lineSeparator() +
+            "Sue First"  + System.lineSeparator() +
+            "John Second"  + System.lineSeparator() +
+            "Dylan Second";
 
     /*
      *  Main Test Suite

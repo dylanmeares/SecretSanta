@@ -53,8 +53,8 @@ public class SecretSantaGeneratorTest {
         SecretSantaGenerator secretSantaGenerator = new SecretSantaGenerator();
 
         List<FamilyMember> familyMembers = new ArrayList<>(Arrays.asList(
-                new FamilyMember("Nathan"),
-                new FamilyMember("Sally"))
+                new FamilyMember("Nathan", "Smith"),
+                new FamilyMember("Sally", "Rader"))
         );
 
         secretSantaGenerator.generateMatches(familyMembers);
@@ -68,9 +68,9 @@ public class SecretSantaGeneratorTest {
         SecretSantaGenerator secretSantaGenerator = new SecretSantaGenerator();
 
         List<FamilyMember> familyMembers = new ArrayList<>(Arrays.asList(
-                new FamilyMember("Nathan"),
-                new FamilyMember("Sally"),
-                new FamilyMember("Billy"))
+                new FamilyMember("Nathan", "Smith"),
+                new FamilyMember("Sally", "Rader"),
+                new FamilyMember("Billy", "Beane"))
         );
 
         List<SantaMatch> matches = secretSantaGenerator.generateMatches(familyMembers);
@@ -78,60 +78,85 @@ public class SecretSantaGeneratorTest {
         assertEquals(3, matches.size());
     }
 
+    //Testing several members in the family with some different last names
+    @Test
+    public void normalSizedFamily() {
+        SecretSantaGenerator secretSantaGenerator = new SecretSantaGenerator();
+
+        List<FamilyMember> familyMembers = new ArrayList<>(Arrays.asList(
+                new FamilyMember("Dylan", "Meares"),
+                new FamilyMember("Bob", "Rader"),
+                new FamilyMember("Susan", "Rader"),
+                new FamilyMember("Billy", "Meares"),
+                new FamilyMember("Molly", "Meares"),
+                new FamilyMember("Sandy", "Rader"),
+                new FamilyMember("Logan", "Meares"),
+                new FamilyMember("Cindy", "Meares"),
+                new FamilyMember("Paul", "Rader"),
+                new FamilyMember("Blue", "Rader"))
+        );
+
+        List<SantaMatch> matches = secretSantaGenerator.generateMatches(familyMembers);
+
+        assertEquals(10, matches.size());
+    }
+
+
+
     //Testing many participants (48 to be exact) produces the correct number of matches
     @Test
     public void giantFamily() {
         SecretSantaGenerator secretSantaGenerator = new SecretSantaGenerator();
 
         List<FamilyMember> familyMembers = new ArrayList<>(Arrays.asList(
-                new FamilyMember("Nathan"),
-                new FamilyMember("Sally"),
-                new FamilyMember("Billy"),
-                new FamilyMember("Jerry"),
-                new FamilyMember("Tim"),
-                new FamilyMember("Terry"),
-                new FamilyMember("Bill"),
-                new FamilyMember("Jack"),
-                new FamilyMember("Aaron"),
-                new FamilyMember("Erin"),
-                new FamilyMember("Damon"),
-                new FamilyMember("Craig"),
-                new FamilyMember("Dylan"),
-                new FamilyMember("Beth"),
-                new FamilyMember("Tom"),
-                new FamilyMember("Logan"),
-                new FamilyMember("Molly"),
-                new FamilyMember("Jimmy"),
-                new FamilyMember("Phil"),
-                new FamilyMember("Kyle"),
-                new FamilyMember("Brendan"),
-                new FamilyMember("David"),
-                new FamilyMember("Jake"),
-                new FamilyMember("Nick"),
-                new FamilyMember("Mason"),
-                new FamilyMember("Max"),
-                new FamilyMember("Sandy"),
-                new FamilyMember("Haylie"),
-                new FamilyMember("Brittany"),
-                new FamilyMember("Wylie"),
-                new FamilyMember("Lauren"),
-                new FamilyMember("Morgan"),
-                new FamilyMember("Molly"),
-                new FamilyMember("Bella"),
-                new FamilyMember("Marissa"),
-                new FamilyMember("Jose"),
-                new FamilyMember("Carlos"),
-                new FamilyMember("Miguel"),
-                new FamilyMember("Peter"),
-                new FamilyMember("Paul"),
-                new FamilyMember("Linda"),
-                new FamilyMember("Lonnie"),
-                new FamilyMember("Lucy"),
-                new FamilyMember("Jen"),
-                new FamilyMember("Jackie"),
-                new FamilyMember("Joe"),
-                new FamilyMember("Karl"),
-                new FamilyMember("Rick")
+                new FamilyMember("Nathan", "Smith"),
+                new FamilyMember("Sally", "Rader"),
+                new FamilyMember("Billy", "Beane"),
+                new FamilyMember("Jerry", "Rader"),
+                new FamilyMember("Tim", "Rader"),
+                new FamilyMember("Terry", "Smith"),
+                new FamilyMember("Bill", "Smith"),
+                new FamilyMember("Jack", "Meares"),
+                new FamilyMember("Aaron", "Meares"),
+                new FamilyMember("Erin", "Meares"),
+                new FamilyMember("Damon", "Meares"),
+                new FamilyMember("Craig", "Smith"),
+                new FamilyMember("Dylan", "Smith"),
+                new FamilyMember("Beth","Jackson"),
+                new FamilyMember("Tom","Jackson"),
+                new FamilyMember("Logan","Jackson"),
+                new FamilyMember("Molly","Jackson"),
+                new FamilyMember("Jimmy", "Rader"),
+                new FamilyMember("Phil", "Burger"),
+                new FamilyMember("Kyle", "Burger"),
+                new FamilyMember("Brendan", "Burger"),
+                new FamilyMember("David", "Burger"),
+                new FamilyMember("Jake", "Burger"),
+                new FamilyMember("Nick", "Lindor"),
+                new FamilyMember("Mason", "Lindor"),
+                new FamilyMember("Max", "Lindor"),
+                new FamilyMember("Sandy", "Lindor"),
+                new FamilyMember("Haylie", "Lindor"),
+                new FamilyMember("Brittany", "Roth"),
+                new FamilyMember("Wylie", "Roth"),
+                new FamilyMember("Lauren", "Roth"),
+                new FamilyMember("Morgan", "Roth"),
+                new FamilyMember("Molly", "Roth"),
+                new FamilyMember("Bella", "Roth"),
+                new FamilyMember("Marissa", "Roth"),
+                new FamilyMember("Jose", "Roth"),
+                new FamilyMember("Carlos", "Roth"),
+                new FamilyMember("Miguel", "Roth"),
+                new FamilyMember("Peter", "Roth"),
+                new FamilyMember("Paul", "Roth"),
+                new FamilyMember("Linda", "Roth"),
+                new FamilyMember("Lonnie", "Roth"),
+                new FamilyMember("Lucy", "Roth"),
+                new FamilyMember("Jen", "Brown"),
+                new FamilyMember("Jackie", "Brown"),
+                new FamilyMember("Joe","Brown"),
+                new FamilyMember("Karl", "Brown"),
+                new FamilyMember("Rick", "Brown")
         ));
 
         List<SantaMatch> matches = secretSantaGenerator.generateMatches(familyMembers);
@@ -140,7 +165,7 @@ public class SecretSantaGeneratorTest {
         assertEquals(48, matches.size());
 
         //Asserting past santas were assigned
-        assertEquals(matches.get(0).receiver.pastSantas[0].getName().trim(), matches.get(0).santa.getName().trim());
+        assertEquals(matches.get(0).receiver.pastSantas[0].getFirstName().trim(), matches.get(0).santa.getFirstName().trim());
     }
 
 }

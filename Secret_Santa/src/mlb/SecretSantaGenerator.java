@@ -1,10 +1,8 @@
 package mlb;
 
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+//This class is responsible for creating the Santa matches. It returns a list of SantaMatch objects
 public class SecretSantaGenerator {
 
     public List<SantaMatch> generateMatches(List<FamilyMember> familyMembers) {
@@ -55,35 +53,70 @@ public class SecretSantaGenerator {
 
     //Method to shuffle both Santas list and Family members list until none of the indexes match between the lists
     private void shuffleLists(List<FamilyMember> familyMembers, List<FamilyMember> santas) {
+        boolean possibleToSeparateFamilies = true;
+        //Seeing if it's possible to have immediate family constraint
+        int highestFrequency = countFrequencies(familyMembers);{
+            if(highestFrequency > (familyMembers.size() / 2)){
+                possibleToSeparateFamilies = false;
+            }
+        }
+
         //Flag to keep track of if indexes are unique
         boolean unique = false;
         //Flag to keep track of if a santa is from previous 3 years
         boolean noPastSantas = false;
+        //Flag to keep track of if a santa is from same immediate family
+        boolean notImmediateFamily = false;
         //Shuffle the lists until the indexes of the list are all unique
-        while (!unique || !noPastSantas) {
+        while (!unique || !noPastSantas || !notImmediateFamily) {
             Collections.shuffle(santas);
             Collections.shuffle(familyMembers);
             unique = true;
             noPastSantas = true;
-            //For family member, check to see if the corresponding index in the santas list is themselves, and also
-            // if their santa  is one of their past 3 santas
+            notImmediateFamily = true;
+            //For each family member, check to see if the corresponding index in the santas list is themselves, in their immediate family, and also
+            // if their santa  is one of their past 3 santas.
             for (int i = 0; i < familyMembers.size(); i++) {
                 //Checking to see if indexes are unique, if not set flag to false
-                if (santas.get(i).getName().equals(familyMembers.get(i).getName())) {
+                if (santas.get(i).getFirstName().equals(familyMembers.get(i).getFirstName())) {
                     unique = false;
                     break;
                 }
+                //Checking to see if matches are from same immediate family
+                if(santas.get(i).getLastName().equals(familyMembers.get(i).getLastName()) && possibleToSeparateFamilies){
+                    notImmediateFamily = false;
+                    break;
+                }
                 //Checking to see that matches are not one of the previous 3 santas
-                if (unique) {
-                    FamilyMember[] pastSantas = familyMembers.get(i).getPastSantas();
-                    for (int j = 0; j < pastSantas.length; j++) {
-                        if (santas.get(i).getName().equals(pastSantas[j].getName())) {
-                            noPastSantas = false;
-                        }
+                FamilyMember[] pastSantas = familyMembers.get(i).getPastSantas();
+                for (int j = 0; j < pastSantas.length; j++) {
+                    if (santas.get(i).getFirstName().equals(pastSantas[j].getFirstName())) {
+                        noPastSantas = false;
+                        break;
                     }
                 }
+
             }
         }
+    }
+
+    //Counting instances of each last name in the list
+    private int countFrequencies(List<FamilyMember> familyMembers) {
+        int highestFrequency = 0;
+
+        TreeMap<String, Integer> tmap = new TreeMap<>();
+        for (FamilyMember familyMember : familyMembers) {
+            Integer c = tmap.get(familyMember.getLastName());
+            tmap.put(familyMember.getLastName(), (c == null) ? 1 : c + 1);
+        }
+
+        for (Map.Entry m : tmap.entrySet()){
+            if(Integer.parseInt(m.getValue().toString()) > highestFrequency){
+                highestFrequency = Integer.parseInt(m.getValue().toString());
+            }
+        }
+
+        return highestFrequency;
     }
 }
 
