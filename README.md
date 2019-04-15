@@ -32,4 +32,4 @@ Each family member's first and last name should be on a new line as shown below:
 #### Jack Lastname<br/> Jill Lastname<br/> Julie Lastname<br/> Joe Lastname<br/>
 
 ##### To run the program Santas for 3 years, run the following:
-java -cp . <filename> 3
+```java -cp . <filename> 3```
