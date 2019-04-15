@@ -1,6 +1,6 @@
 # Part one
 
-### I designed a program that takes a file. Each family member should be on a new line as shown below:
+### I designed a program that takes a file that contains a list of family members. Each family member should be on a new line as shown below:
 
 #### Jack<br/> Jill<br/> Julie<br/> Joe<br/>
 
