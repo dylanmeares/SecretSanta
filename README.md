@@ -1,19 +1,13 @@
-# SecretSanta
+# Part one
 
-Part 1
+### I designed a program that takes a file. Each family member should be on a new line as shown below:
 
-I designed a program that takes a file.  Each family member should be on a new line as shown below:
+#### Jack<br/> Jill<br/> Julie<br/> Joe<br/>
 
-Jack
-Jill
-Julie
-Joe
+##### To compile the program, naviagate to the src directory and run the following:
 
-To compile the program, naviagate to the src directory and run the following:
+```javac -cp . mlb/*.java```
 
-javac -cp . mlb/*.java
+##### To run the program, run the following:
 
-To run the program, run the following:
-
-java -cp . <path to file>
-
+```java -cp . <filename>```
